@@ -3,9 +3,16 @@
 <head>
     <title>Thermostat</title>
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-    <script src="/src/Thermostat.js"></script>
+    <script src="src/Thermostat.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="jquery/interface.js"></script>
 </head>
 <body>
+    <script>
+        thermostat = new Thermostat()
+        console.log(thermostat.temperature)
+
+    </script>
     <h1 id='temp'></h1>
     <button id='tempUp'></button>
     <button id='tempDown'></button>
