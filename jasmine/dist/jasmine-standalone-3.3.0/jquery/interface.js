@@ -1,5 +1,24 @@
 $ (document).ready(function() {
     var thermostat = new Thermostat();
+    var openweather = 'http://api.openweathermap.org/data/2.5/weather?APPID=95fe1bb3ce25d9ae2bb98f96c68b008a&id='
+
+    // function getWeatherUrl(city, callback){
+    //     $.getJSON(openweather + city, callback)
+    // }
+
+    // var foo;
+
+    getWeatherUrl(2643743, (data) => {
+        foo = (data.main.temp)
+    })
+    
+    $('#city').change(function() {
+        var city = $('#city').val()
+        $.get(openweather + city, function(data) {
+            $('#weather').text(data.main.temp)
+        })
+    })
+
     $('#temp').text(thermostat.temperature);
     $('#powerSaveStatus').text(thermostat.powerSaver);
 
@@ -44,7 +63,7 @@ $ (document).ready(function() {
         $('#daring').addClass("shabby")
     });
 
-    $('#contemporary').hover(function() {
+    $('#hoverB').hover(function() {
         $('#daring').removeClass("shabby")
     });
 
