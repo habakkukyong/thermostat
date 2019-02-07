@@ -2,25 +2,32 @@
 <html>
 <head>
     <title>Thermostat</title>
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
+    <link rel="stylesheet" type="text/css" media="screen" href="public/css/main.css" />
     <script src="src/Thermostat.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="jquery/interface.js"></script>
 </head>
 <body>
+
     <script>
-        thermostat = new Thermostat()
-        console.log(thermostat.temperature)
+        // alert("Howdy")
+        console.log('Floid')
 
     </script>
     <h1 id='temp'></h1>
-    <button id='tempUp'></button>
-    <button id='tempDown'></button>
-
-    <h2 id='powerSaveStatus'></h2>
-    <button id='powerSaveOn'></button>
-    <button id='powerSaveOff'></button>
-    <button id='reset'></button>
+    <button id='tempUp'>Up</button>
+    <button id='tempDown'>Down</button>
+    <h2>Power Save Is On: </h2><h2 id='powerSaveStatus'></h2>
+    <h3 id='errorcatcher'></h3>
+    <button id='powerSaveOn'>Save Power</button>
+    <button id='powerSaveOff'>Stop Saving Power</button>
+    <button id='reset'>Reset To Default Temp</button>
+    <button id='magic'>Magic Button</button>
+    <button id='normal'>Normal Button</button>
+    <button class='great' id='daring'>Daring Button</button>
+    <button id='mysterious'>Mysterious Button</button>
+    <button id='contemporary'>Contemporary Fake Button</button>
+    
 
 </body>
 </html>
