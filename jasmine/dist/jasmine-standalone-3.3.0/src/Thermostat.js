@@ -6,19 +6,25 @@ function Thermostat () {
     this.maxtemp = 25
 };
 
-Thermostat.prototype._up = function() {
-    if(this.powerSaver === true) {
-        if(this.temperature >= 25) {
+Thermostat.prototype.up = function() {
+    if(this.temperature >= this.maxtemp) {
+        try {
             throw new Error('cannot increase above 25 degrees when power saver is on')
-        } else {
-            this.temperature ++
         }
-    }
+        catch(err) {
+            document.getElementById("errorcatcher").innerHTML = "Can't increase beyond max 25/32" 
+        }
+    } else { this.temperature ++ }
 }
 
 Thermostat.prototype._down = function() {
     if(this.temperature <= this.MINIMUM_TEMP) {
-        throw new Error('cannot reduce below 10 degrees')
+        try {
+            throw new Error('cannot reduce below 10 degrees')
+        }
+        catch(err) {
+            document.getElementById("errorcatcher").innerHTML = 'Min always 10' 
+        }
     } else {
         this.temperature --
     }  

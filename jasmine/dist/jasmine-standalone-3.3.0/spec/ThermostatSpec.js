@@ -22,16 +22,16 @@ describe ("Thermostat", function() {
         expect(thermostat.maxtemp).toBe(32)
     })
 
-    describe ("_up", function() {
+    describe ("up", function() {
         it('increments temperature by one', function() {
-            thermostat._up()
+            thermostat.up()
             expect(thermostat.temperature).toBe(21)
         })
         it('has a maximum temp of 25 degrees when power saver is on', function() {
             for (let counter = 0; counter < 5; counter++){
-                thermostat._up()
+                thermostat.up()
             };
-            expect(function(){thermostat._up();}).toThrowError('cannot increase above 25 degrees when power saver is on')           
+            expect(function(){thermostat.up();}).toThrowError('cannot increase above 25 degrees when power saver is on')
         })
     })
 
