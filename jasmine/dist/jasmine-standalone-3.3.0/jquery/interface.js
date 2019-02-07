@@ -8,38 +8,50 @@ $ (document).ready(function() {
 
     // var foo;
 
-    getWeatherUrl(2643743, (data) => {
-        foo = (data.main.temp)
-    })
+    // getWeatherUrl(2643743, (data) => {
+    //     foo = (data.main.temp)
+    // })
+    
+    // set default location to london
+    var defaultLocation = '2643743'
+    var units ='&units=metric'
+
+    $.get(openweather + defaultLocation + units, function(data) {
+        $('#weather').text(data.main.temp)})
+
     
     $('#city').change(function() {
         var city = $('#city').val()
-        $.get(openweather + city, function(data) {
+        $.get(openweather + city + units, function(data) {
             $('#weather').text(data.main.temp)
         })
     })
 
     $('#temp').text(thermostat.temperature);
-    $('#powerSaveStatus').text(thermostat.powerSaver);
+
+    $('#powerSaveStatus').text(thermostat.powerSaver ? "On" : "Off");
 
     $('#tempUp').click(function() {
         thermostat.up();
-        $('#temp').text(thermostat.temperature);
+        $('#temp').text(thermostat.temperature).slideUp(100).slideDown(100);
+        $("body").css("background-color", energyUsageColours[thermostat._usage()])
+
     });
 
     $('#tempDown').click(function() {
         thermostat._down();
-        $('#temp').text(thermostat.temperature);
+        $('#temp').text(thermostat.temperature).slideUp(100).slideDown(100);
+        $("body").css("background-color", energyUsageColours[thermostat._usage()])
     });
 
     $('#powerSaveOn').click(function() {
         thermostat._powerSaveOn();
-        $('#powerSaveStatus').text(thermostat.powerSaver);
+        $('#powerSaveStatus').text(thermostat.powerSaver ? "On" : "Off");
     });
 
     $('#powerSaveOff').click(function() {
         thermostat._powerSaveOff();
-        $('#powerSaveStatus').text(thermostat.powerSaver);
+        $('#powerSaveStatus').text(thermostat.powerSaver ? "On" : "Off");
     });
 
     $('#reset').click(function() {
@@ -66,6 +78,16 @@ $ (document).ready(function() {
     $('#hoverB').hover(function() {
         $('#daring').removeClass("shabby")
     });
+
+    var energyUsageColours =  {
+        'low-usage': "green",
+        'medium-usage': "yellow",
+        'high-usage': "red"
+    }
+
+    $("body").css("background-color", energyUsageColours[thermostat._usage()])
+
+
 
     function getPeople() {
         $.get("https://async-workshops-api.herokuapp.com/people", function(response) {
